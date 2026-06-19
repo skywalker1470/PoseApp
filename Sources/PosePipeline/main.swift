@@ -208,7 +208,7 @@ func annotate(_ poses: [[(String, CGPoint)]], pixelBuffer: CVPixelBuffer, width:
         data: CVPixelBufferGetBaseAddress(out), width: width, height: height,
         bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(out),
         space: CGColorSpaceCreateDeviceRGB(),
-        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue
     )?.draw(final, in: CGRect(x: 0, y: 0, width: width, height: height))
     CVPixelBufferUnlockBaseAddress(out, [])
     return out
